@@ -16,9 +16,9 @@ rm -rf .git
 
 cd ..
 
-npm install express --save-exact 
+npm install express --save-exact
 
-touch src/server.js 
+touch src/server.js
 
 echo 'node_modules' >> .gitignore
 
@@ -35,79 +35,38 @@ atom .
 'use strict'
 
 var express = requires('express');
-
 var app = express();
 
 app.use('/', express.static('public'));
 
-app.get('/api/todos', function(req, res) {
-	//content type header of typle text/html
-	//but we want json
-	res.send('here are the todos');
+var router = express.Router();
+
+router.get('/api/todos', function(req, res) {
 	res.json({todos:[]});
 })
 
+// TODO: PUT,POST,GET routes
+
 app.listen(3000, function() {
-	console.log("listeningnt on port 3000");
+	console.log("listening on port 3000");
 });
 
 npm install -g nodemon
 
+mkdir src/api/
 
+// api/index.js
+var router = express.Router();
 
+router.get('/api/todos', function(req, res) {
+	res.json({todos:[]});
+})
 
+// TODO: PUT,POST,GET routes
 
+module.exports = router;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// server.js
+var express = requires('express');
+var router = require('./api');
+var app = express();
