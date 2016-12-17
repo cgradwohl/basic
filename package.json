@@ -8,7 +8,9 @@
   },
   "author": "chris gradwohl",
   "license": "ISC",
-  "devDependencies": {
-    "jshint": "^2.9.4"
+  "dependencies": {
+    "jshint": "^2.9.4",
+    "express": "latest",
+    "nodemon": "latest"
   }
 }
